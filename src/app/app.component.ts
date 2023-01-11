@@ -12,7 +12,8 @@ export class AppComponent {
   public actorList: any = []
   public movieCastList: any = []
   public directorList: any = []
-  public input: string = ""
+  public input: string = ""  
+  public searchText: string = "";
 
   constructor(
     private movieService: MovieService,
