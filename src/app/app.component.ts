@@ -12,6 +12,7 @@ export class AppComponent {
   public actorList: any = []
   public movieCastList: any = []
   public directorList: any = []
+  public input: string = ""
 
   constructor(
     private movieService: MovieService,
@@ -19,22 +20,25 @@ export class AppComponent {
 
   public getMovieList(){
     this.movieList = this.movieService.getMovieTable()
-    console.log('movie',this.movieList)
+    console.log(this.movieList)
     this.getActorList()
   }
   public getActorList(){
     this.actorList = this.movieService.getActorTable()
-    console.log('actor',this.actorList)
     this.getMovieCastList()
   }
   public getMovieCastList(){
     this.movieCastList = this.movieService.getMovieCastTable()
-    console.log('movie cast',this.movieCastList)
     this.getDirectorList()
   }
   public getDirectorList(){
     this.directorList = this.movieService.getDirectorTable()
-    console.log('director',this.directorList)
+  }
+
+  public search(){
+    // console.log('input', this.input)
+    console.log(this.movieList.filter((item: { mov_title: string; }) => item.mov_title === this.input))
+    // return this.movieList.filter((item: { mov_title: string; }) => item.mov_title === this.input);
   }
 
   ngOnInit(): void {
