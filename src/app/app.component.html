@@ -5,24 +5,24 @@
     <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search">
   </div>
 
-  <table class="table" *ngIf="(movieList | filter: searchText).length > 0; else noResults">
+  <table class="table" *ngIf="(globalList | filter: searchText).length > 0; else noResults">
     <colgroup>
-      <col width="10%">
-      <col width="40%">
-      <col width="10%">
-      <col width="10%">
-      <col width="10%">
-      <col width="10%">
-      <col width="10%">
+      <col width="14%">
+      <col width="14%">
+      <col width="14%">
+      <col width="14%">
+      <col width="14%">
+      <col width="14%">
+      <col width="14%">
     </colgroup>
-    <thead>
+    <!-- <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Brand</th>
         <th scope="col">Model</th>
         <th scope="col">Year</th>
       </tr>
-    </thead>
+    </thead> -->
     <tbody>
       <tr *ngFor="let car of movieList | filter: searchText; let i = index">
         <th scope="row">{{car.mov_id}}</th>
@@ -32,6 +32,31 @@
         <td>{{car.mov_lang}}</td>
         <td>{{car.mov_dt_rel}}</td>
         <td>{{car.mov_rel_country}}</td>
+      </tr>
+    </tbody>
+    <br>
+    <tbody>
+      <tr *ngFor="let car of actorList | filter: searchText; let i = index">
+        <th scope="row">{{car.act_id}}</th>
+        <td>{{car.act_fname}}</td>
+        <td>{{car.act_lname}}</td>
+        <td>{{car.act_gender}}</td>
+      </tr>
+    </tbody>
+    <br>
+    <tbody>
+      <tr *ngFor="let car of movieCastList | filter: searchText; let i = index">
+        <th scope="row">{{car.act_id}}</th>
+        <td>{{car.mov_id}}</td>
+        <td>{{car.role}}</td>
+      </tr>
+    </tbody>
+    <br>
+    <tbody>
+      <tr *ngFor="let car of directorList | filter: searchText; let i = index">
+        <th scope="row">{{car.dir_id}}</th>
+        <td>{{car.dir_fname}}</td>
+        <td>{{car.dir_lname}}</td>
       </tr>
     </tbody>
   </table>

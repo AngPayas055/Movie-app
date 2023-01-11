@@ -15,6 +15,8 @@ export class AppComponent {
   public input: string = ""  
   public searchText: string = "";
 
+  public globalList: any = []
+
   constructor(
     private movieService: MovieService,
   ) { }
@@ -34,6 +36,8 @@ export class AppComponent {
   }
   public getDirectorList(){
     this.directorList = this.movieService.getDirectorTable()
+    this.globalList = [this.movieList, this.actorList, this.movieCastList, this.directorList].reduce((a, b) => a.concat(b));
+    console.log(this.globalList)
   }
 
   public search(){
